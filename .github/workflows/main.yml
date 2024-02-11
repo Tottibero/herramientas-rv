@@ -20,7 +20,7 @@ jobs:
     - name: Deploy to Server
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-          cd /path/to/your/project
+          cd /var/www/herramientas-rv/herramientas-rv
           git pull origin main
           cd backend
           npm install
