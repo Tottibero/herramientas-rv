@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const puppeteer = require('puppeteer');
 
-router.get('/lambgoat', async (req, res) => {
+router.get('/api/lambgoat', async (req, res) => {
     const desiredMonth = req.query.month; // Ejemplo: ?month=May
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

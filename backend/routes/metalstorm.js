@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const puppeteer = require('puppeteer');
 
-router.get('/metalstorm', async (req, res) => {
+router.get('/api/metalstorm', async (req, res) => {
     const desiredMonth = req.query.month; // Ejemplo: "April"
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

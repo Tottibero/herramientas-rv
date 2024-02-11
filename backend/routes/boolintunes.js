@@ -3,7 +3,7 @@ const router = express.Router();
 const puppeteer = require('puppeteer');
 
 // Define la ruta para boolintunes
-router.get('/boolintunes', async (req, res) => {
+router.get('/api/boolintunes', async (req, res) => {
     const desiredMonth = req.query.month; // Ejemplo: ?month=March
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
