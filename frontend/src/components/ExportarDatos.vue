@@ -48,7 +48,9 @@ export default {
             }
             const monthName = this.monthNames[month - 1];
             try {
-                const response = await axios.get(import.meta.env.VITE_API_BASE_URL+ `/${this.selectedSource}?month=${monthName}`);
+                const response = await axios.get(`http://localhost:3000/api/${this.selectedSource}?month=${monthName}`);
+                console.log(response)
+
                 this.releases = response.data;
             } catch (error) {
                 console.error("Error al obtener los lanzamientos:", error);

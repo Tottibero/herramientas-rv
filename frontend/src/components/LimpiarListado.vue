@@ -5,10 +5,14 @@ import * as XLSX from 'xlsx';
 const resultadosBusqueda = ref([]);
 const lineasInvalidas = ref([]);
 const mostrarLineasInvalidas = ref(false);
+const nombreArchivo = ref('');
 
 function cargarArchivo(event) {
   const file = event.target.files[0];
   if (file) {
+
+    nombreArchivo.value = file.name;
+
     const reader = new FileReader();
     reader.onload = (e) => {
       const data = e.target.result;
@@ -101,7 +105,9 @@ function exportarAExcel() {
   wsData.unshift(['Género', 'Artista - Título']); // Encabezados de columna
   const ws = XLSX.utils.aoa_to_sheet(wsData);
   XLSX.utils.book_append_sheet(wb, ws, 'Resultados');
-  XLSX.writeFile(wb, 'resultados.xlsx');
+  // Añade el nombre del archivo original al título del archivo Excel
+  const nombreArchivoExportado = `resultados_${nombreArchivo.value}.xlsx`.replace(/[^a-z0-9.]/gi, '_'); // Limpia el nombre para hacerlo seguro para un archivo
+  XLSX.writeFile(wb, nombreArchivoExportado);
 }
 
 function generarHTMLParaExportar() {
